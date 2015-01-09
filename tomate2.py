@@ -15,8 +15,8 @@ Gdk.threads_init()
 
 class TomateConfig(object):
   #Parameters
-  MIN_WORK_TIME = 10 #60 * 10   # min work time in seconds
-  DONE_WORK_TIME = 30 #60 * 25  # finished work time in seconds
+  MIN_WORK_TIME = 60 * 10   # min work time in seconds
+  DONE_WORK_TIME = 60 * 25  # finished work time in seconds
   POLL_INTERVAL = 5         # polling interval in seconds
 
 class States(object):
@@ -36,7 +36,7 @@ STATE_ICONS = {
     States.IDLE : 'idle',
     States.WORKING : 'working',
     States.OK : 'ok',
-    States.DONE : 'ok'
+    States.DONE : 'done'
     }
 
 
