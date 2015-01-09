@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Tomate2
+Comment=A simple productivity notification tool inspired from the Pomodoro technique
+Exec=tomate2
+Icon=/usr/local/share/tomate2/img/working.svg
+Terminal=false
+Categories=GTK;GNOME;Utility;

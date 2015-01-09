@@ -12,5 +12,6 @@ if [[ $EUID -ne 0 ]]; then
 else
     rm -rf "$INSTALLDIR"
     rm "$BINDIR/tomate2"
+    rm /usr/share/applications/tomate2.desktop
     echo "uninstalled tomate2"
 fi

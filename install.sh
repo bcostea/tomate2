@@ -14,5 +14,6 @@ else
     cp -r . "$INSTALLDIR/"
     echo "Installed tomate2 to $INSTALLDIR"
     ln -s "$INSTALLDIR/tomate2.py" "$BINDIR/tomate2"
-    echo "tomate2 start the app"
+    cp tomate2.desktop /usr/share/applications/
+    echo "Execute tomate2 to start the app"
 fi
