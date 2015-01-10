@@ -19,6 +19,25 @@ class PomodoroTests(unittest.TestCase):
   def test_format_time_minute(self):
     self.assertEqual(self.tomate.format_time(60), "1 minute")
 
+  def test_format_time_hour_minute(self):
+    self.assertEqual(self.tomate.format_time( 60 * 60 + 60), "1 hour and 1 minute")
+
+  def test_format_time_hour_minutes(self):
+    self.assertEqual(self.tomate.format_time( 60 * 60 +120), "1 hour and 2 minutes")
+
+  def test_format_time_hours_minute(self):
+    self.assertEqual(self.tomate.format_time( 2 * 60 * 60 + 60), "2 hours and 1 minute")
+
+  def test_format_time_day_hour_minute(self):
+    self.assertEqual(self.tomate.format_time( 25 * 60 * 60 + 60), "1 day 1 hour and 1 minute")
+
+  def test_format_time_days_minute(self):
+    self.assertEqual(self.tomate.format_time( 2 * 24 * 60 * 60 + 60), "2 days and 1 minute")
+
+  def test_format_time_days_hours_minutes(self):
+    self.assertEqual(self.tomate.format_time( (3 * 24 * 60 * 60 )+ (5 * 60 * 60
+      )+ 120), "3 days 5 hours and 2 minutes")
+
   def test_format_time_minutes(self):
     self.assertEqual(self.tomate.format_time(182), "3 minutes")
 

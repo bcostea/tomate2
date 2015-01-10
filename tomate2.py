@@ -80,11 +80,35 @@ class Pomodoro:
   def format_time(self,seconds):
     if seconds < 60:
       return "%d seconds" % seconds
-    minutes = floor(seconds / 60)
-    if minutes > 1:
-      return "%d minutes" % minutes
-    else:
-      return "%d minute" % minutes
+
+    minutes = floor( seconds / 60 )
+    hours = floor( minutes / 60 )
+    days = floor( hours / 24 )
+
+    d_string = ''
+    h_string = ''
+    m_string = ''
+
+    if minutes < 60:
+      if minutes > 1: return "%d minutes" % minutes
+      else: return "1 minute"
+
+    if days > 0:
+      hours = hours - ( days * 24 )
+      minutes = minutes - ( days * 24 * 60 )
+      if days == 1: d_string = "1 day "
+      else: d_string = "%d day%s " % (days, 's')
+
+    if hours > 0:
+      minutes = minutes - (hours * 60)
+      if hours == 1: h_string = '1 hour '
+      else: h_string = "%d hours " % hours 
+
+    if minutes > 0 :
+      if minutes == 1: m_string = 'and 1 minute'
+      else: m_string = "and %d minutes" % minutes
+
+    return d_string + h_string + m_string
 
   def set_state(self, state, time):
     old_state=self.state
@@ -94,6 +118,7 @@ class Pomodoro:
 
     if state == States.IDLE:
       delta = time - self.start_working_time
+      self.st_menu.set_label("Start")
       if old_state == States.OK:
         self.tooltip = "Good, you worked for " + self.format_time(delta) + "!"
       elif old_state == States.WORKING:
@@ -105,6 +130,7 @@ class Pomodoro:
       self.start_working_time = time
       delta = time - self.start_working_time
       self.tooltip = "Working for " + self.format_time(delta) + "..."
+      self.st_menu.set_label("Working for %s... stop" % self.format_time(delta))
     elif state == States.OK:
       delta = time - self.start_working_time
       self.tooltip = "Good, you worked for " + self.format_time(delta) + "!"
